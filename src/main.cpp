@@ -2,13 +2,16 @@
 #include <Servo.h>
 #include <someFunctions.h>
 
+const int leftArmPin = 12;  //blue
+const int rightArmPin = 13; // yellow
+
 Servo leftArm;
 Servo rightArm;
 
 void setup() {
   Serial.begin(9600);
-  leftArm.attach(12); 
-  rightArm.attach(13);
+  leftArm.attach(leftArmPin);
+  rightArm.attach(rightArmPin);
   someFunction();
 }
 
@@ -23,4 +26,3 @@ void loop() {
   rightArm.write(120);
   delay(1000);
 }
-

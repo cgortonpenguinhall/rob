@@ -1,5 +1,3 @@
-#include <Arduino.h>
-
 void waveHands() {
     leftArm.write(45);
     delay(1000);

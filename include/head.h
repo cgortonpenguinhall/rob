@@ -1,5 +1,3 @@
-#include <Arduino.h>
-
 void moveHead (){ 
     head.write(0);
     delay(1000);

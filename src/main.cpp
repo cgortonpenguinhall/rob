@@ -28,18 +28,21 @@ TMRpcm audio;
 #include <head.h>
 
 void setup() {
+  pinMode(fiberOpticsPin, OUTPUT);
+  pinMode(speakerPin, OUTPUT);
+
   Serial.begin(9600);
+  Serial.println("Starting");
+
   leftArm.attach(leftArmPin);
   rightArm.attach(rightArmPin);
   head.attach(headPin);
-  pinMode(fiberOpticsPin, OUTPUT);
+
   audio.speakerPin = speakerPin;
   if (!SD.begin(SD_ChipSelectPin)) {
     Serial.println("SD fail");
     return;
   }
-  audio.setVolume(6);
-  audio.play("APHrob.wav");
 }
 
 void loop() {
@@ -48,9 +51,16 @@ void loop() {
   if (dist <= 75 && dist > 0) {
     Serial.println(dist);
     digitalWrite(fiberOpticsPin, HIGH);
-    waveHands();
-    audio.setVolume(6);
+    //waveHands();
+    Serial.println("playing audio");
+    audio.setVolume(5);
     audio.play("APHrob.wav");
+    delay(4000);
+    audio.stopPlayback();
+    // digitalWrite(speakerPin, LOW);
+    // Serial.println("disabling audio");
+    // audio.disable();
+    delay(250);
     moveHead();
   }
   fiberOpticBlink();

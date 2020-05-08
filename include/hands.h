@@ -1,4 +1,5 @@
 void waveHands() {
+    Serial.println("waveHands()");
     leftArm.write(45);  // up
     rightArm.write(120); // up
     delay (1000);
@@ -16,5 +17,6 @@ void waveHands() {
     delay(1000);
     leftArm.write(90);  // straight
     rightArm.write(90); // striaght
+    delay(1000);
 }
 

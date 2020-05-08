@@ -1,4 +1,5 @@
 void moveHead() {
+  Serial.println("moveHead()");
   int seconds = 5;
 
   for(int i= 90; i > 30; i--){ // look from center to left

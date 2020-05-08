@@ -43,6 +43,7 @@ void setup() {
     Serial.println("SD fail");
     return;
   }
+  audio.speakerPin = speakerPin;
 }
 
 void loop() {
@@ -51,16 +52,9 @@ void loop() {
   if (dist <= 75 && dist > 0) {
     Serial.println(dist);
     digitalWrite(fiberOpticsPin, HIGH);
-    //waveHands();
-    Serial.println("playing audio");
-    audio.setVolume(5);
-    audio.play("APHrob.wav");
-    delay(4000);
-    audio.stopPlayback();
-    // digitalWrite(speakerPin, LOW);
-    // Serial.println("disabling audio");
-    // audio.disable();
-    delay(250);
+    waveHands();
+    // audio.setVolume(5);
+    // audio.play("APHrob.wav");
     moveHead();
   }
   fiberOpticBlink();

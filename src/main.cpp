@@ -9,6 +9,8 @@ const int echoPin = 8;         // blue
 const int triggerPin = 9;      // yellow
 const int fiberOpticsPin = 7;  // red
 const int maxDistance = 200;
+const int indicatorPin = 22;   //green
+ 
 
 Servo leftArm;
 Servo rightArm;
@@ -22,6 +24,7 @@ NewPing sonar(triggerPin, echoPin, maxDistance);
 
 void setup() {
   pinMode(fiberOpticsPin, OUTPUT);
+  pinMode(indicatorPin,OUTPUT);
 
   Serial.begin(9600);
   Serial.println("Starting");
@@ -38,6 +41,9 @@ void loop() {
     Serial.println(dist);
     digitalWrite(fiberOpticsPin, HIGH);
     waveHands();
+    digitalWrite(indicatorPin, HIGH);
+    delay(1000);
+    digitalWrite(indicatorPin, LOW);
     moveHead();
   }
   fiberOpticBlink();
